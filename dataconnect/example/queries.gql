@@ -1,0 +1,30 @@
+mutation CreateUser @auth(level: USER) {
+  user_insert(data: {
+    email: "example@example.com",
+    username: "exampleuser",
+    displayName: "Example User"
+  })
+}
+
+query GetVideos @auth(level: PUBLIC) {
+  videos {
+    id
+    caption
+    videoUrl
+  }
+}
+
+mutation AddLike @auth(level: USER) {
+  like_insert(data: {
+    videoId: "123e4567-e89b-12d3-a456-426614174000",
+    userId_expr: "auth.uid"
+  })
+}
+
+query GetMyComments @auth(level: USER) {
+  comments(where: { authorId_expr: "auth.uid" }) {
+    id
+    text
+    createdAt
+  }
+}

@@ -1,0 +1,32 @@
+mutation SeedDatabase @auth(level: USER) {
+  user_upsertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      email: "bob@example.com",
+      username: "bobuser",
+      createdAt: "2024-03-15T12:00:00Z"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      email: "alice@example.com",
+      username: "aliceuser",
+      createdAt: "2024-03-16T14:30:00Z"
+    }
+  ])
+  video_upsertMany(data: [
+    {
+      id: "650e8400-e29b-41d4-a716-446655440000",
+      authorId: "550e8400-e29b-41d4-a716-446655440000",
+      caption: "Bob's first video",
+      videoUrl: "http://example.com/bobsfirstvideo.mp4",
+      createdAt: "2024-03-17T10:00:00Z"
+    },
+    {
+      id: "650e8400-e29b-41d4-a716-446655440001",
+      authorId: "550e8400-e29b-41d4-a716-446655440001",
+      caption: "Alice's cooking video",
+      videoUrl: "http://example.com/alicescookingvideo.mp4",
+      createdAt: "2024-03-18T16:45:00Z"
+    }
+  ])
+}
