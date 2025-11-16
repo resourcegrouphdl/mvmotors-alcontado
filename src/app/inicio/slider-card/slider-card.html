@@ -1,1 +1,15 @@
 <p>slider-card works!</p>
+
+@if (status$ | async; as status) {
+  <div class="slider-card">
+    <h3>Respuesta del backend</h3>
+    <p>{{ status.campoPrueba }}</p>
+  </div>
+} @else {
+  <div class="slider-card">
+    <p>Cargandooo...</p>
+  </div>
+}
+
+
+
