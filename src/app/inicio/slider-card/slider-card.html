@@ -1,15 +1,14 @@
-<p>slider-card works!</p>
+<p>lista de motos!</p>
 
-@if (status$ | async; as status) {
-  <div class="slider-card">
-    <h3>Respuesta del backend</h3>
-    <p>{{ status.campoPrueba }}</p>
-  </div>
-} @else {
-  <div class="slider-card">
-    <p>Cargandooo...</p>
-  </div>
-}
+<div *ngIf="status$ | async as status">
+  <ul>
+    <li *ngFor="let nombre of status.nombres">
+      {{ nombre }}
+    </li>
+  </ul>
+
+  <p>Total: {{ status.total }}</p>
+</div>
 
 
 

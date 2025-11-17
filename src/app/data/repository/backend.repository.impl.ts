@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {map, Observable} from 'rxjs';
+
 
 import { BackendRepository } from '../../core/repository/backend.repository';
 import { BackendStatus } from '../../core/models/backend-status.model';

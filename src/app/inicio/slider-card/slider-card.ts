@@ -16,8 +16,6 @@ export class SliderCard {
   private svc = inject(StatusService);
   status$ = this.svc.getStatus();
 
-  constructor() {
-    this.status$.subscribe(d => console.log('COMPONENTE 🔵:', d));
-  }
+
 
 }

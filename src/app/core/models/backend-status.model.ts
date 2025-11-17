@@ -1,3 +1,4 @@
 export interface BackendStatus {
-  campoPrueba: string;
+  nombres: string[];
+  total: number;
 }

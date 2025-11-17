@@ -1,11 +1,11 @@
 import { BackendStatus } from '../../core/models/backend-status.model';
+import {PageResponse, Person} from '../api/backend.api';
 
-export interface BackendStatusResponse {
-  campoPrueba: string;
-}
 
-export function mapBackendStatus(res: BackendStatusResponse): BackendStatus {
+
+export function mapBackendStatus(res: PageResponse<Person>): BackendStatus {
   return {
-    campoPrueba: res.campoPrueba
+    nombres: res.content.map(item => item.name),
+    total: res.totalElements
   };
 }
