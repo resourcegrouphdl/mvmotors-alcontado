@@ -1,54 +1,24 @@
-<div *ngIf="statusss$ | async as statuss">
-
-  <!-- ✅ FORMULARIO DE FILTROS -->
-  <div class="filtros">
-    <input
-      type="text"
-      placeholder="Filtrar por marca"
-      [(ngModel)]="filtroMarca"
-    />
-
-    <input
-      type="number"
-      placeholder="Precio máximo"
-      [(ngModel)]="filtroPrecioMax"
-    />
+<div *ngIf="statusss$ | async as statuss" class="page-center">
+  <div class="filtros container">
+    <input type="text" placeholder="Filtrar por marca" [(ngModel)]="filtroMarca" />
+    <input type="number" placeholder="Precio máximo" [(ngModel)]="filtroPrecioMax" />
   </div>
-
   <p>Total: {{ statuss.total }}</p>
-
   <div class="cards-grid">
-    <article
-      class="card"
-      *ngFor="let moto of filtrarMotos(statuss.nombres); trackBy: trackById"
-    >
+    <article class="card" *ngFor="let moto of filtrarMotos(statuss.nombres); trackBy: trackById">
       <div class="card-media">
-        <img
-          [src]="moto.imagen_principal || fallbackImage"
-          [alt]="(moto.marca ? moto.marca + ' ' : '') + (moto.modelo || 'moto')"
-        />
+        <img [src]="moto.imagen_principal || fallbackImage" [alt]="(moto.marca ? moto.marca + ' ' : '') + (moto.modelo || 'moto')"/>
         <span class="badge" *ngIf="moto.destacado">DESTACADO</span>
       </div>
-
       <div class="card-body">
-        <h3 class="card-title">
-          {{ moto.marca || 'Marca' }}
-          <small *ngIf="moto.modelo">- {{ moto.modelo }}</small>
-        </h3>
-
+        <h3 class="card-title">{{ moto.marca || 'Marca' }} <small *ngIf="moto.modelo">- {{ moto.modelo }}</small></h3>
         <p class="card-meta">
           <span *ngIf="moto.categoria">{{ moto.categoria }} •</span>
           <span *ngIf="moto.stock">Stock: {{ moto.stock }}</span>
         </p>
-
-        <p class="card-price" *ngIf="moto.precio">
-          S/ {{ moto.precio }}
-        </p>
-
+        <p class="card-price" *ngIf="moto.precio"> S/ {{ moto.precio }}  </p>
         <div class="card-actions">
-          <button class="primary" (click)="verDetalle(moto)">
-            Ver más detalle
-          </button>
+          <button class="primary" (click)="verDetalle(moto)">Ver más detalle </button>
         </div>
       </div>
     </article>

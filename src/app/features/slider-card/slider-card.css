@@ -1,4 +1,7 @@
-/* Grid general */
+.page-center {
+  padding: 24px;
+}
+
 .cards-grid{
   display: grid;
   gap: 1rem;
