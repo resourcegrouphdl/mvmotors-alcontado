@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {StatusService} from '../../features/status/services/status.service';
+import {StatusService} from '../status/services/status.service';
 
 
 
