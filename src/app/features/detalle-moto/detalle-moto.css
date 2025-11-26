@@ -1,0 +1,149 @@
+.detalle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+}
+
+.moto-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1200px;
+  gap: 0px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  overflow: hidden;
+}
+
+.moto-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.moto-info {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.moto-title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.badge {
+  background: #111;
+  color: white;
+  width: fit-content;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.descripcion {
+  color: #555;
+  line-height: 1.6;
+}
+
+.price-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.precio {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+.stock {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1b5e20;
+}
+
+.sin-stock {
+  color: #c62828;
+}
+
+.btn-comprar {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: #1976d2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-comprar:hover {
+  background: #0d47a1;
+}
+
+/* GALERÍA */
+.galeria {
+  margin-top: 25px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.galeria img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.galeria img:hover {
+  transform: scale(1.08);
+}
+
+.loading {
+  font-size: 18px;
+  padding: 40px;
+}
+
+
+/* ✅ MODO MOBILE */
+@media (max-width: 768px) {
+
+  .moto-card {
+    grid-template-columns: 1fr;   /* ✅ una sola columna */
+  }
+
+  .moto-img {
+    order: 1; /* ✅ la imagen sube */
+  }
+
+  .moto-info {
+    order: 2; /* ✅ la descripción baja */
+  }
+
+  .moto-img img {
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  .moto-title {
+    font-size: 22px;
+  }
+
+  .precio {
+    font-size: 20px;
+  }
+
+  .detalle-container {
+    padding: 16px;
+  }
+
+}

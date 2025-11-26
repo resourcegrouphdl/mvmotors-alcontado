@@ -1,0 +1,60 @@
+
+<div class="detalle-container" *ngIf="moto; else loading">
+
+  <div class="moto-card">
+
+    <!-- IMAGEN PRINCIPAL -->
+    <div class="moto-img">
+      <img
+        [src]="moto.imagen_principal || 'no-image.png'"
+        [alt]="moto.marca + ' ' + moto.modelo"
+      />
+    </div>
+
+    <!-- INFO -->
+    <div class="moto-info">
+
+      <h2 class="moto-title">
+        {{ moto.marca }} {{ moto.modelo }}
+      </h2>
+
+      <span class="badge">{{ moto.categoria }}</span>
+
+      <p class="descripcion">
+        {{ moto.descripcion }}
+      </p>
+
+      <div class="price-box">
+        <span class="precio">
+          S/ {{ moto.precio }}
+        </span>
+
+        <span class="stock" [class.sin-stock]="moto.stock === '0'">
+          Stock: {{ moto.stock }}
+        </span>
+      </div>
+
+
+      <a class="btn-comprar whatsapp" [href]="getWhatsappLink()" target="_blank">
+        Comprar por WhatsApp
+      </a>
+
+
+    </div>
+  </div>
+
+  <!-- GALERÍA -->
+  <div class="galeria" *ngIf="moto.imagenes?.length">
+    <img
+      *ngFor="let img of moto.imagenes"
+      [src]="img"
+      alt="galeria"
+    />
+  </div>
+
+</div>
+
+<ng-template #loading>
+  <p class="loading">Cargando moto...</p>
+</ng-template>
+

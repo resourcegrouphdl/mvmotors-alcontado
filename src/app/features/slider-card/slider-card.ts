@@ -4,6 +4,7 @@ import {StatusService} from '../status/services/status.service';
 import {MotocicletaInicio} from './models';
 import {Observable , of} from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 
@@ -16,6 +17,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './slider-card.css',
 })
 export class SliderCard implements OnInit {
+
+
 
   private svc = inject(StatusService);
   ngOnInit() {
@@ -38,7 +41,7 @@ export class SliderCard implements OnInit {
   }
 
   verDetalle(moto: MotocicletaInicio) {
-    // lógica para ver detalle (router.navigate o emitir evento)
+    this.router.navigate(['/detalle', moto.id]);
     console.log('ver', moto);
   }
 
@@ -54,7 +57,10 @@ export class SliderCard implements OnInit {
     });
   }
 
-  constructor() {
+  constructor(private router: Router) {
+
+
+
     this.statusss$ = of({
       total: 12,
       nombres: [
@@ -63,25 +69,25 @@ export class SliderCard implements OnInit {
           marca: 'Honda',
           modelo: 'XR150',
           categoria: 'Dual Sport',
-          imagen_principal: 'https://picsum.photos/400?10',
+          imagen_principal: 'mtoo.jpg',
           precio: '7500',
           stock: '12'
         },
         {
-          id: '2',
+          id: '1',
           marca: 'Yamaha',
           modelo: 'R15',
           categoria: 'Sport',
-          imagen_principal: 'https://picsum.photos/400?11',
+          imagen_principal: 'mtoo.jpg',
           precio: '15500',
           stock: '3'
         },
         {
-          id: '3',
+          id: '1',
           marca: 'Bajaj',
           modelo: 'NS200',
           categoria: 'Street',
-          imagen_principal: 'https://picsum.photos/400?12',
+          imagen_principal: 'mtoo.jpg',
           precio: '9500',
           stock: '5'
         },
@@ -90,51 +96,25 @@ export class SliderCard implements OnInit {
           marca: 'Honda',
           modelo: 'XR150',
           categoria: 'Dual Sport',
-          imagen_principal: 'https://picsum.photos/400?10',
+          imagen_principal: 'mtoo.jpg',
           precio: '7500',
           stock: '12'
         },
         {
-          id: '2',
-          marca: 'Yamaha',
-          modelo: 'R15',
-          categoria: 'Sport',
-          imagen_principal: 'https://picsum.photos/400?11',
-          precio: '15500',
-          stock: '3'
-        },
-        {
-          id: '3',
-          marca: 'Bajaj',
-          modelo: 'NS200',
-          categoria: 'Street',
-          imagen_principal: 'https://picsum.photos/400?12',
-          precio: '9500',
-          stock: '5'
-        },{
           id: '1',
-          marca: 'Honda',
-          modelo: 'XR150',
-          categoria: 'Dual Sport',
-          imagen_principal: 'https://picsum.photos/400?10',
-          precio: '7500',
-          stock: '12'
-        },
-        {
-          id: '2',
           marca: 'Yamaha',
           modelo: 'R15',
           categoria: 'Sport',
-          imagen_principal: 'https://picsum.photos/400?11',
+          imagen_principal: 'mtoo.jpg',
           precio: '15500',
           stock: '3'
         },
         {
-          id: '3',
+          id: '1',
           marca: 'Bajaj',
           modelo: 'NS200',
           categoria: 'Street',
-          imagen_principal: 'https://picsum.photos/400?12',
+          imagen_principal: 'mtoo.jpg',
           precio: '9500',
           stock: '5'
         },{
@@ -142,25 +122,51 @@ export class SliderCard implements OnInit {
           marca: 'Honda',
           modelo: 'XR150',
           categoria: 'Dual Sport',
-          imagen_principal: 'https://picsum.photos/400?10',
+          imagen_principal: 'mtoo.jpg',
           precio: '7500',
           stock: '12'
         },
         {
-          id: '2',
+          id: '1',
           marca: 'Yamaha',
           modelo: 'R15',
           categoria: 'Sport',
-          imagen_principal: 'https://picsum.photos/400?11',
+          imagen_principal: 'mtoo.jpg',
           precio: '15500',
           stock: '3'
         },
         {
-          id: '3',
+          id: '1',
           marca: 'Bajaj',
           modelo: 'NS200',
           categoria: 'Street',
-          imagen_principal: 'https://picsum.photos/400?12',
+          imagen_principal: 'mtoo.jpg',
+          precio: '9500',
+          stock: '5'
+        },{
+          id: '1',
+          marca: 'Honda',
+          modelo: 'XR150',
+          categoria: 'Dual Sport',
+          imagen_principal: 'mtoo.jpg',
+          precio: '7500',
+          stock: '12'
+        },
+        {
+          id: '1',
+          marca: 'Yamaha',
+          modelo: 'R15',
+          categoria: 'Sport',
+          imagen_principal: 'mtoo.jpg',
+          precio: '15500',
+          stock: '3'
+        },
+        {
+          id: '1',
+          marca: 'Bajaj',
+          modelo: 'NS200',
+          categoria: 'Street',
+          imagen_principal: 'mtoo.jpg',
           precio: '9500',
           stock: '5'
         }
