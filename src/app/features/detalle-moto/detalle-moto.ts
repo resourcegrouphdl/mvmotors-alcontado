@@ -48,7 +48,7 @@ export class DetalleMoto implements OnInit {
   }
 
   getWhatsappLink(): string {
-    const telefono = '51916823469';
+    const telefono = '5199999';
     const mensaje = `Hola, estoy interesado en la moto`;
     return `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
   }

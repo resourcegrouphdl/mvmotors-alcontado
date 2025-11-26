@@ -44,13 +44,18 @@
   </div>
 
   <!-- GALERÍA -->
+  <!-- HTML: cada etiqueta label contiene input + thumb + modal -->
   <div class="galeria" *ngIf="moto.imagenes?.length">
-    <img
-      *ngFor="let img of moto.imagenes"
-      [src]="img"
-      alt="galeria"
-    />
+    <label *ngFor="let img of moto.imagenes" class="thumb-wrapper">
+      <input type="checkbox" class="modal-toggle" />
+      <img [src]="img" class="thumb" alt="miniatura" />
+      <div class="modal" role="dialog" aria-hidden="true">
+        <img [src]="img" class="modal-img" alt="ampliada" />
+      </div>
+    </label>
   </div>
+
+
 
 </div>
 
