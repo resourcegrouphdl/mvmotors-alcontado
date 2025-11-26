@@ -10,5 +10,43 @@
   <p>Total: {{ status.total }}</p>
 </div>
 
+<p>lista de motos!</p>
+
+<!-- status$ es un Observable que resolvemos con async -->
+<div *ngIf="statusss$ | async as statuss">
+  <p>Total: {{ statuss.total }}</p>
+
+  <div class="cards-grid">
+    <article class="card" *ngFor="let moto of statuss.nombres; trackBy: trackById">
+      <div class="card-media">
+        <img
+          [src]="moto.imagen_principal || fallbackImage"
+          [alt]="(moto.marca ? moto.marca + ' ' : '') + (moto.modelo || 'moto')"
+        />
+        <span class="badge" *ngIf="moto.destacado">DESTACADO</span>
+      </div>
+
+      <div class="card-body">
+        <h3 class="card-title">
+          {{ moto.marca || 'Marca' }} <small *ngIf="moto.modelo">- {{ moto.modelo }}</small>
+        </h3>
+
+        <p class="card-meta">
+          <span *ngIf="moto.categoria">{{ moto.categoria }} •</span>
+          <span *ngIf="moto.stock">Stock: {{ moto.stock }}</span>
+        </p>
+
+        <p class="card-price" *ngIf="moto.precio">S/ {{ moto.precio }}</p>
+
+        <div class="card-actions">
+          <button (click)="verDetalle(moto)">Ver</button>
+          <button class="primary" (click)="comprar(moto)">Comprar</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+
 
 
