@@ -11,7 +11,6 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
-
   {
     path: 'home',
     component: Inicio,
