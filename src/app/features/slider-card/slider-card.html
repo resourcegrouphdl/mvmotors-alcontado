@@ -1,23 +1,27 @@
-<p>lista de motos!</p>
-
-<div *ngIf="status$ | async as status">
-  <ul>
-    <li *ngFor="let nombre of status.nombres">
-      {{ nombre }}
-    </li>
-  </ul>
-
-  <p>Total: {{ status.total }}</p>
-</div>
-
-<p>lista de motos!</p>
-
-<!-- status$ es un Observable que resolvemos con async -->
 <div *ngIf="statusss$ | async as statuss">
+
+  <!-- ✅ FORMULARIO DE FILTROS -->
+  <div class="filtros">
+    <input
+      type="text"
+      placeholder="Filtrar por marca"
+      [(ngModel)]="filtroMarca"
+    />
+
+    <input
+      type="number"
+      placeholder="Precio máximo"
+      [(ngModel)]="filtroPrecioMax"
+    />
+  </div>
+
   <p>Total: {{ statuss.total }}</p>
 
   <div class="cards-grid">
-    <article class="card" *ngFor="let moto of statuss.nombres; trackBy: trackById">
+    <article
+      class="card"
+      *ngFor="let moto of filtrarMotos(statuss.nombres); trackBy: trackById"
+    >
       <div class="card-media">
         <img
           [src]="moto.imagen_principal || fallbackImage"
@@ -28,7 +32,8 @@
 
       <div class="card-body">
         <h3 class="card-title">
-          {{ moto.marca || 'Marca' }} <small *ngIf="moto.modelo">- {{ moto.modelo }}</small>
+          {{ moto.marca || 'Marca' }}
+          <small *ngIf="moto.modelo">- {{ moto.modelo }}</small>
         </h3>
 
         <p class="card-meta">
@@ -36,17 +41,16 @@
           <span *ngIf="moto.stock">Stock: {{ moto.stock }}</span>
         </p>
 
-        <p class="card-price" *ngIf="moto.precio">S/ {{ moto.precio }}</p>
+        <p class="card-price" *ngIf="moto.precio">
+          S/ {{ moto.precio }}
+        </p>
 
         <div class="card-actions">
-          <button (click)="verDetalle(moto)">Ver</button>
-          <button class="primary" (click)="comprar(moto)">Comprar</button>
+          <button class="primary" (click)="verDetalle(moto)">
+            Ver más detalle
+          </button>
         </div>
       </div>
     </article>
   </div>
 </div>
-
-
-
-

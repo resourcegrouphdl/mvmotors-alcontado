@@ -109,3 +109,17 @@
 @media (max-width: 420px){
   .card-media { height: 120px; }
 }
+
+.filtros {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.filtros input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 200px;
+}
+
