@@ -6,7 +6,7 @@ import {Tablaclientes} from './shared/tablaclientes/tablaclientes';
 import {Navbar} from './shared/navbar/navbar';
 import {TopInformationBar} from './shared/top-information-bar/top-information-bar';
 import {LogosInMove} from './shared/logos-in-move/logos-in-move';
-import {Home} from './home/home';
+import {Home} from './features/home/home';
 
 @Component({
   selector: 'app-root',
