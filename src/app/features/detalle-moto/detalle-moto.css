@@ -104,10 +104,6 @@
   transition: 0.2s;
 }
 
-.galeria img:hover {
-  transform: scale(1.08);
-}
-
 .loading {
   font-size: 18px;
   padding: 40px;
@@ -148,20 +144,8 @@
 
 }
 
-/* GALERIA */
-.galeria {
 
-}
 
-/* MINIATURA */
-.thumb {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
-  cursor: zoom-in;
-  border-radius: 8px;
-  transition: transform 0.18s ease;
-}
 
 
 /* ocultamos el checkbox */
@@ -185,11 +169,10 @@
 
 /* IMAGEN AMPLIADA */
 .modal-img {
-  max-width: 1000vw;
-  max-height: 90vh;
+  transform: scale(8);
   object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  border-radius: 1px;
+  box-shadow: 0 12px 100px rgba(0,0,0,0.6);
 }
 
 /* Cuando el checkbox está checked -> mostramos el modal */
@@ -201,5 +184,5 @@
 
 /* cerrar al hacer click en la imagen ampliada (opcional): */
 .modal-img { cursor: zoom-out; }
-.modal-img:active { /* opcional feedback */ transform: scale(.995); }
+
 
