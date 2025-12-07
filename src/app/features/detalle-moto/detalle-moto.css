@@ -164,15 +164,17 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity .22s ease;
-  z-index: 9999;
+
 }
 
 /* IMAGEN AMPLIADA */
 .modal-img {
-  transform: scale(8);
+  max-width: 90vw;
+  max-height: 90vh;
+  transform: scale(3.8);
   object-fit: contain;
   border-radius: 1px;
-  box-shadow: 0 12px 100px rgba(0,0,0,0.6);
+
 }
 
 /* Cuando el checkbox está checked -> mostramos el modal */
