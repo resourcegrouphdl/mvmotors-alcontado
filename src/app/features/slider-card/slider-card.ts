@@ -1,13 +1,10 @@
-import {Component, inject, Input, OnInit} from '@angular/core';
+import {Component, inject,  OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {StatusService} from '../status/services/status.service';
-
 import {Observable , of} from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import {BackendStatus, motoUnited} from '../../core/models/backend-status.model';
-
-import {RouterOutlet} from '@angular/router';
+import {motoUnited} from '../../core/models/backend-status.model';
 import {PageResponse} from '../../data/api/backend.api';
 
 
@@ -40,8 +37,8 @@ export class SliderCard implements OnInit {
   }
 
   verDetalle(moto: motoUnited) {
-    this.router.navigate(['/detalle', moto.id]);
-    console.log('ver', moto);
+    this.router.navigate(['/detalle', moto.id],{state: { moto }});
+
   }
 
   filtrarMotos(motos: motoUnited[]): motoUnited[] {

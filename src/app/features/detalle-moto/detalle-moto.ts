@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {MotocicletaProduct} from '../../core/models/Imotocicleta';
-
+import { motoUnited } from '../../core/models/backend-status.model';
 
 @Component({
   selector: 'app-detalle-moto',
@@ -15,37 +15,24 @@ import {MotocicletaProduct} from '../../core/models/Imotocicleta';
 export class DetalleMoto implements OnInit {
   id!: string;
   // @ts-ignore
-  moto: MotocicletaProduct | undefined // aquí guardaremos la moto encontrada
-
+  moto!: motoUnited;
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')!;
-    console.log('ID recibido:', this.id);
+    if (history.state?.moto) {
+      this.moto = history.state.moto as motoUnited;
+    } else {
+      console.warn('Moto no recibida por state');
+    }
 
-    this.buscarMoto();
+    console.log(this.moto);
+
+
+
   }
 
-  buscarMoto() {
-    // SIMULACIÓN (luego esto vendrá de tu API)
-    const motos: MotocicletaProduct[] = [
-      {
-        id: '1',
-        marca: 'Yamaha',
-        modelo: 'R1',
-        categoria: 'Deportiva',
-        descripcion: 'Superbike de alto rendimiento.',
-        imagen_principal: 'mtoo.jpg',
-        imagenes: ['mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg', 'mtoo.jpg'],
-        precio: '15000',
-        stock: '4',
-        fichaTecnica: {} as any
-      }
-    ];
 
-    this.moto = motos.find(m => m.id === this.id);
-    console.log("moto", this.moto)
-  }
 
   getWhatsappLink(): string {
     const telefono = '5199999';

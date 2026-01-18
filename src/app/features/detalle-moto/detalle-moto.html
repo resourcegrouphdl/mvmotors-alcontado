@@ -1,75 +1,34 @@
+<div *ngIf="moto; else cargando" class="detalle-container">
 
-<div class="detalle-container" *ngIf="moto; else loading">
+  <h2>{{ moto.idmoto }}</h2>
 
-  <div class="moto-card">
+  <p><strong>Placa:</strong> {{ moto.placa }}</p>
+  <p><strong>Año:</strong> {{ moto.anio }}</p>
+  <p><strong>Estado:</strong> {{ moto.estado }}</p>
 
-    <!-- IMAGEN PRINCIPAL -->
-    <div class="moto-img">
-      <img
-        [src]="moto.imagen_principal || 'no-image.png'"
-        [alt]="moto.marca + ' ' + moto.modelo"
-      />
-    </div>
+  <p><strong>Descripción:</strong> {{ moto.descripcion }}</p>
+  <p><strong>Precio:</strong> S/ {{ moto.precio }}</p>
 
-    <!-- INFO -->
-    <div class="moto-info">
-
-      <h2 class="moto-title">
-        {{ moto.marca }} {{ moto.modelo }}
-      </h2>
-
-      <span class="badge">{{ moto.categoria }}</span>
-
-      <p class="descripcion">
-        {{ moto.descripcion }}
-      </p>
-
-      <div class="price-box">
-        <span class="precio">
-          S/ {{ moto.precio }}
-        </span>
-
-        <span class="stock" [class.sin-stock]="moto.stock === '0'">
-          Stock: {{ moto.stock }}
-        </span>
-      </div>
-      <div class="price-box">
-        <span class="precio">
-          S/ {{ moto.precio }}
-        </span>
-
-        <span class="stock" [class.sin-stock]="moto.stock === '0'">
-          Stock: {{ moto.stock }}
-        </span>
-      </div>
-
-
-
-      <a class="btn-comprar whatsapp" [href]="getWhatsappLink()" target="_blank">
-        Comprar por WhatsApp
-      </a>
-
-
-    </div>
-  </div>
-
-  <!-- GALERÍA -->
-  <!-- HTML: cada etiqueta label contiene input + thumb + modal -->
+  <!-- IMÁGENES -->
   <div class="galeria" *ngIf="moto.imagenes?.length">
-    <label *ngFor="let img of moto.imagenes" class="thumb-wrapper">
-      <input type="checkbox" class="modal-toggle" />
-      <img [src]="img" class="thumb" alt="miniatura" />
-      <div class="modal" role="dialog" aria-hidden="true">
-        <img [src]="img" class="modal-img" alt="ampliada" />
-      </div>
-    </label>
+    <img
+      *ngFor="let img of moto.imagenes"
+      [src]="img"
+      alt="Moto"
+      class="img-moto"
+    />
   </div>
 
-
+  <a
+    class="btn-wsp"
+    [href]="getWhatsappLink()"
+    target="_blank"
+  >
+    📲 Contactar por WhatsApp
+  </a>
 
 </div>
 
-<ng-template #loading>
-  <p class="loading">Cargando moto...</p>
+<ng-template #cargando>
+  <p>Cargando información...</p>
 </ng-template>
-

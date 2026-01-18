@@ -1,190 +1,92 @@
 .detalle-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
-.moto-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-width: 1200px;
-  gap: 0px;
-  background: white;
-  border-radius: 18px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-  overflow: hidden;
-}
-
-.moto-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.moto-info {
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.moto-title {
+/* TÍTULO */
+.detalle-container h2 {
   font-size: 28px;
-  font-weight: bold;
+  margin-bottom: 16px;
+  color: #1f2937;
 }
 
-.badge {
-  background: #111;
-  color: white;
-  width: fit-content;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 13px;
+/* INFO */
+.detalle-container p {
+  font-size: 16px;
+  margin: 6px 0;
+  color: #374151;
 }
 
-.descripcion {
-  color: #555;
-  line-height: 1.6;
-}
-
-.price-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.precio {
-  font-size: 24px;
-  font-weight: bold;
-  color: #2e7d32;
-}
-
-.stock {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1b5e20;
-}
-
-.sin-stock {
-  color: #c62828;
-}
-
-.btn-comprar {
-  margin-top: 20px;
-  padding: 14px;
-  border-radius: 12px;
-  border: none;
-  background: #1976d2;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.btn-comprar:hover {
-  background: #0d47a1;
+.detalle-container strong {
+  color: #111827;
 }
 
 /* GALERÍA */
 .galeria {
-  margin-top: 25px;
   display: flex;
-  gap: 12px;
+  gap: 14px;
+  margin: 20px 0;
   flex-wrap: wrap;
 }
 
-.galeria img {
-  width: 90px;
-  height: 90px;
+.img-moto {
+  width: 280px;
+  height: 190px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.loading {
-  font-size: 18px;
-  padding: 40px;
+.img-moto:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-
-/* ✅ MODO MOBILE */
-@media (max-width: 768px) {
-
-  .moto-card {
-    grid-template-columns: 1fr;   /* ✅ una sola columna */
-  }
-
-  .moto-img {
-    order: 1; /* ✅ la imagen sube */
-  }
-
-  .moto-info {
-    order: 2; /* ✅ la descripción baja */
-  }
-
-  .moto-img img {
-    max-height: 300px;
-    object-fit: cover;
-  }
-
-  .moto-title {
-    font-size: 22px;
-  }
-
-  .precio {
-    font-size: 20px;
-  }
-
-  .detalle-container {
-    padding: 16px;
-  }
-
-}
-
-
-
-
-
-/* ocultamos el checkbox */
-.modal-toggle {
-  display: none;
-}
-
-/* MODAL (oculto por defecto) */
-.modal {
-  position: fixed;
-  inset: 0; /* top:0; right:0; bottom:0; left:0; */
-  display: flex;
+/* BOTÓN WHATSAPP */
+.btn-wsp {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.75);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .22s ease;
-
+  gap: 10px;
+  margin-top: 20px;
+  padding: 14px 22px;
+  background: linear-gradient(135deg, #25d366, #1ebe5d);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s ease;
 }
 
-/* IMAGEN AMPLIADA */
-.modal-img {
-  max-width: 90vw;
-  max-height: 90vh;
-  transform: scale(3.8);
-  object-fit: contain;
-  border-radius: 1px;
-
+.btn-wsp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.6);
 }
 
-/* Cuando el checkbox está checked -> mostramos el modal */
-.modal-toggle:checked + .thumb + .modal {
-  opacity: 1;
-  pointer-events: auto;
-  cursor: zoom-out;
+/* LOADING */
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #6b7280;
 }
 
-/* cerrar al hacer click en la imagen ampliada (opcional): */
-.modal-img { cursor: zoom-out; }
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .detalle-container {
+    margin: 16px;
+    padding: 18px;
+  }
 
-
+  .img-moto {
+    width: 100%;
+    height: auto;
+  }
+}
