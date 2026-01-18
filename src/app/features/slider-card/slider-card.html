@@ -1,20 +1,23 @@
-<div *ngIf="statusss$ | async as statuss" class="page-center">
-  <div class="filtros container">
+<div *ngIf="requestBackend | async as statuss" class="page-center">
+  <div class="filtros">
     <input type="text" placeholder="Filtrar por marca" [(ngModel)]="filtroMarca" />
-    <input type="number" placeholder="Precio máximo" [(ngModel)]="filtroPrecioMax" />
+    <!--<input type="number" placeholder="Precio máximo" [(ngModel)]="filtroPrecioMax" />-->
   </div>
-  <p>Total: {{ statuss.total }}</p>
+
+  <p>Total: {{ statuss.totalElements }}</p>
   <div class="cards-grid">
-    <article class="card" *ngFor="let moto of filtrarMotos(statuss.nombres); trackBy: trackById">
+    <article class="card" *ngFor="let moto of filtrarMotos(statuss.content); trackBy: trackById">
       <div class="card-media">
-        <img [src]="moto.imagen_principal || fallbackImage" [alt]="(moto.marca ? moto.marca + ' ' : '') + (moto.modelo || 'moto')"/>
-        <span class="badge" *ngIf="moto.destacado">DESTACADO</span>
+        <img
+          [src]="moto.imagenes?.[0]"
+          [alt]="moto.idmoto || 'moto'"
+        />
       </div>
       <div class="card-body">
-        <h3 class="card-title">{{ moto.marca || 'Marca' }} <small *ngIf="moto.modelo">- {{ moto.modelo }}</small></h3>
+        <h3 class="card-title">{{ moto.idmoto || 'Marca' }} <small *ngIf="moto.idmoto">- {{ moto.idmoto}}</small></h3>
         <p class="card-meta">
-          <span *ngIf="moto.categoria">{{ moto.categoria }} •</span>
-          <span *ngIf="moto.stock">Stock: {{ moto.stock }}</span>
+          <span *ngIf="moto.descripcion">{{ moto.descripcion }} •</span>
+          <span *ngIf="moto.estado">Stock: {{ moto.estado }}</span>
         </p>
         <p class="card-price" *ngIf="moto.precio"> S/ {{ moto.precio }}  </p>
         <div class="card-actions">

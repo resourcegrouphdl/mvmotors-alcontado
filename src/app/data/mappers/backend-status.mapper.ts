@@ -1,11 +1,14 @@
 import { BackendStatus } from '../../core/models/backend-status.model';
-import {PageResponse, Person} from '../api/backend.api';
+import {PageResponse} from '../api/backend.api';
+import {motoUnited} from '../../features/slider-card/models';
 
 
 
-export function mapBackendStatus(res: PageResponse<Person>): BackendStatus {
+export function mapBackendStatus(
+  res: PageResponse<motoUnited>
+): BackendStatus {
   return {
-    nombres: res.content.map(item => item.name),
-    total: res.totalElements
+    content: res.content,
+    totalElements: res.totalElements
   };
 }

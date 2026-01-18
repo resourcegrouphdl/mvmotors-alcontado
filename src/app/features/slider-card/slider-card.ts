@@ -1,12 +1,14 @@
 import {Component, inject, Input, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {StatusService} from '../status/services/status.service';
-import {MotocicletaInicio} from './models';
+
 import {Observable , of} from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import {BackendStatus, motoUnited} from '../../core/models/backend-status.model';
 
-
+import {RouterOutlet} from '@angular/router';
+import {PageResponse} from '../../data/api/backend.api';
 
 
 @Component({
@@ -18,37 +20,34 @@ import { Router } from '@angular/router';
 })
 export class SliderCard implements OnInit {
 
+  requestBackend!: Observable<PageResponse<motoUnited>>;
 
 
   private svc = inject(StatusService);
+  private router = inject(Router);
   ngOnInit() {
-    this.svc.getStatus().subscribe(status => {
-      console.log('STATUS COMPLETO:', status);
-      console.log('NOMBRES:', status.nombres);
-      console.log('TOTAL:', status.total);
-    });
+    this.requestBackend = this.svc.getStatus();
   }
 
-  @Input() statusss$!: Observable<{ nombres: MotocicletaInicio[]; total: number }>;
 
-  fallbackImage = 'assets/images/fallback-moto.png';
 
   filtroMarca = '';
   filtroPrecioMax?: number;
 
-  trackById(index: number, item: MotocicletaInicio) {
+
+  trackById(index: number, item: motoUnited) {
     return item.id;
   }
 
-  verDetalle(moto: MotocicletaInicio) {
+  verDetalle(moto: motoUnited) {
     this.router.navigate(['/detalle', moto.id]);
     console.log('ver', moto);
   }
 
-  filtrarMotos(motos: MotocicletaInicio[]): MotocicletaInicio[] {
+  filtrarMotos(motos: motoUnited[]): motoUnited[] {
     return motos.filter(m => {
       const pasaMarca =
-        !this.filtroMarca || m.marca?.toLowerCase().includes(this.filtroMarca.toLowerCase());
+        !this.filtroMarca || m.idmoto?.toLowerCase().includes(this.filtroMarca.toLowerCase());
 
       const pasaPrecio =
         !this.filtroPrecioMax || Number(m.precio) <= this.filtroPrecioMax;
@@ -57,121 +56,5 @@ export class SliderCard implements OnInit {
     });
   }
 
-  constructor(private router: Router) {
-
-
-
-    this.statusss$ = of({
-      total: 12,
-      nombres: [
-        {
-          id: '1',
-          marca: 'Honda',
-          modelo: 'XR150',
-          categoria: 'Dual Sport',
-          imagen_principal: 'mtoo.jpg',
-          precio: '7500',
-          stock: '12'
-        },
-        {
-          id: '1',
-          marca: 'Yamaha',
-          modelo: 'R15',
-          categoria: 'Sport',
-          imagen_principal: 'mtoo.jpg',
-          precio: '15500',
-          stock: '3'
-        },
-        {
-          id: '1',
-          marca: 'Bajaj',
-          modelo: 'NS200',
-          categoria: 'Street',
-          imagen_principal: 'mtoo.jpg',
-          precio: '9500',
-          stock: '5'
-        },
-        {
-          id: '1',
-          marca: 'Honda',
-          modelo: 'XR150',
-          categoria: 'Dual Sport',
-          imagen_principal: 'mtoo.jpg',
-          precio: '7500',
-          stock: '12'
-        },
-        {
-          id: '1',
-          marca: 'Yamaha',
-          modelo: 'R15',
-          categoria: 'Sport',
-          imagen_principal: 'mtoo.jpg',
-          precio: '15500',
-          stock: '3'
-        },
-        {
-          id: '1',
-          marca: 'Bajaj',
-          modelo: 'NS200',
-          categoria: 'Street',
-          imagen_principal: 'mtoo.jpg',
-          precio: '9500',
-          stock: '5'
-        },{
-          id: '1',
-          marca: 'Honda',
-          modelo: 'XR150',
-          categoria: 'Dual Sport',
-          imagen_principal: 'mtoo.jpg',
-          precio: '7500',
-          stock: '12'
-        },
-        {
-          id: '1',
-          marca: 'Yamaha',
-          modelo: 'R15',
-          categoria: 'Sport',
-          imagen_principal: 'mtoo.jpg',
-          precio: '15500',
-          stock: '3'
-        },
-        {
-          id: '1',
-          marca: 'Bajaj',
-          modelo: 'NS200',
-          categoria: 'Street',
-          imagen_principal: 'mtoo.jpg',
-          precio: '9500',
-          stock: '5'
-        },{
-          id: '1',
-          marca: 'Honda',
-          modelo: 'XR150',
-          categoria: 'Dual Sport',
-          imagen_principal: 'mtoo.jpg',
-          precio: '7500',
-          stock: '12'
-        },
-        {
-          id: '1',
-          marca: 'Yamaha',
-          modelo: 'R15',
-          categoria: 'Sport',
-          imagen_principal: 'mtoo.jpg',
-          precio: '15500',
-          stock: '3'
-        },
-        {
-          id: '1',
-          marca: 'Bajaj',
-          modelo: 'NS200',
-          categoria: 'Street',
-          imagen_principal: 'mtoo.jpg',
-          precio: '9500',
-          stock: '5'
-        }
-      ]
-    });
-  }
 
 }

@@ -1,6 +1,26 @@
 .page-center {
-  padding: 24px;
+  padding: 22px;
 }
+
+.filtros {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.filtros input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .filtros {
+    flex-direction: column;
+  }
+}
+
 
 .cards-grid{
   display: grid;
@@ -113,16 +133,10 @@
   .card-media { height: 120px; }
 }
 
-.filtros {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 16px;
-}
 
-.filtros input {
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  width: 200px;
-}
+
+
+
+/* 📱 En pantallas pequeñas: 1 columna */
+
 

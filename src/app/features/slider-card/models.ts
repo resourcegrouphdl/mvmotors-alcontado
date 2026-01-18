@@ -1,13 +1,24 @@
 export interface MotocicletaInicio {
-  id: string;
-  marca?: string;
-  modelo?: string;
-  categoria?: string;
-  imagen_principal?: string;
-  precioWeb?: string; //id del precio en la tabla de precios
-  precio?: string; //id del precio en la tabla de precios
-  stock?: string; //id del stock en la tabla de stock
-  destacado?: string;
-  promociones?: string[]; //id de las promociones en la tabla de promociones
-  precioInicial?: string; //id del precio inicial en la tabla de precios
+  content?: motoUnited[];
+  pageable?: any;
+  totalPages?: number;
+  totalElements?: number;
+  last?: boolean;
+  first?: boolean
+  size?: number;
+  sort?: any;
+  numberOfElements?: number;
+  empty?: string;
 }
+
+export interface motoUnited {
+  id: number;
+  placa: string;
+  imagenes?: string[];
+  idmoto: string;
+  precio: string;
+  anio: string;
+  descripcion: string;
+  estado: string;
+}
+
