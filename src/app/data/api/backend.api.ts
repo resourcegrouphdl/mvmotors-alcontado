@@ -37,7 +37,7 @@ export interface PageResponse<T> {
 export class BackendApi {
 
   private readonly http = inject(HttpClient);
-  private readonly baseUrl = 'https://contado-backend-26647667439.europe-west1.run.app/prueba'; // o environment.apiUrl
+  private readonly baseUrl = 'https://contado-backend-26647667439.europe-west1.run.app/prueba/front'; // o environment.apiUrl
 
   getStatus(page: number = 0, size: number = 20): Observable<PageResponse<motoUnited>> {
 
